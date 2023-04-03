@@ -20,7 +20,7 @@ IF EXIST .\CMD.EXE CD ..\..
 
 ECHO [xWSL Installer 20220802]
 ECHO:
-ECHO Enter a unique name for your xWSL distro or hit Enter to use default. 
+::ECHO Enter a unique name for your xWSL distro or hit Enter to use default. 
 :: SET /p DISTRO=Keep this name simple, no space or underscore characters [UbuntuWSL]: 
 SET DISTRO=UbuntuWSL
 IF EXIST "%DISTRO%" (ECHO. & ECHO Folder exists with that name, choose a new folder name. & PAUSE & GOTO DI)
@@ -34,7 +34,8 @@ SET SSHPRT=3322
 ::                  SET /p WINDPI=Set a custom DPI scale, or hit Enter for Windows default [%WINDPI%]: 
 FOR /f "delims=" %%a in ('PowerShell -Command "%WINDPI% * 96" ') do set "LINDPI=%%a"
 FOR /f "delims=" %%a in ('PowerShell -Command 36 * "%WINDPI%" ') do set "PANEL=%%a"
-SET DEFEXL=NONO& SET /p DEFEXL=[Not recommended!] Type X to eXclude from Windows Defender: 
+:: SET DEFEXL=NONO& SET /p DEFEXL=[Not recommended!] Type X to eXclude from Windows Defender: 
+SET DEFEXL=NONO
 SET DISTROFULL=%CD%\%DISTRO%
 SET _rlt=%DISTROFULL:~2,2%
 IF "%_rlt%"=="\\" SET DISTROFULL=%CD%%DISTRO%
